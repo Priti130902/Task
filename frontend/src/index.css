@@ -1,0 +1,435 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === RESET + GLOBAL === */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: radial-gradient(circle at top, #111827 0, #020617 60%);
+  color: #e5e7eb;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* === APP LAYOUT (SIDEBAR + TOPBAR) === */
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+}
+
+.sidebar {
+  width: 240px;
+  padding: 20px 18px;
+  border-right: 1px solid #1f2937;
+  background: #020617;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.sidebar-logo-badge {
+  height: 34px;
+  width: 34px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.sidebar-logo-text {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.sidebar-sub {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.sidebar-nav {
+  flex: 1;
+}
+
+.sidebar-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: #9ca3af;
+  text-decoration: none;
+  margin-bottom: 4px;
+  transition: 0.15s ease;
+}
+
+.sidebar-link:hover {
+  background: #020617;
+  color: #e5e7eb;
+}
+
+.sidebar-link-active {
+  background: #111827;
+  color: #f9fafb;
+}
+
+.sidebar-user {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.sidebar-avatar {
+  height: 32px;
+  width: 32px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+.main-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  height: 60px;
+  border-bottom: 1px solid #1f2937;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.topbar-left span:first-child {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.topbar-left span:last-child {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.topbar-actions a,
+.topbar-actions button {
+  font-size: 12px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid #374151;
+  background: transparent;
+  color: #e5e7eb;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: 8px;
+}
+
+.topbar-actions a.primary,
+.topbar-actions button.primary {
+  border: none;
+  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+}
+
+.page-content {
+  padding: 24px 28px 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* === DASHBOARD BASIC === */
+.dashboard-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.dashboard-subtitle {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: #020617;
+  border-radius: 16px;
+  border: 1px solid #1f2937;
+  padding: 14px 16px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.7);
+}
+
+.card-label {
+  font-size: 11px;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.card-value {
+  margin-top: 8px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.card-value.green {
+  color: #4ade80;
+}
+
+.card-value.amber {
+  color: #facc15;
+}
+
+/* === PANELS === */
+.panel {
+  background: #020617;
+  border-radius: 16px;
+  border: 1px solid #1f2937;
+  padding: 18px 18px 20px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+}
+
+.panel-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+/* === FORM / INPUT / BUTTON === */
+.task-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #374151;
+  background: #020617;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.task-input::placeholder {
+  color: #9ca3af;
+}
+
+.task-input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25);
+}
+
+.btn-primary {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, #7c3aed, #2563eb, #06b6d4);
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  transition: 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.35);
+}
+
+/* === TASK ITEM === */
+.task-list-empty {
+  text-align: center;
+  font-size: 13px;
+  color: #9ca3af;
+  padding: 20px 0;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #020617;
+  border: 1px solid #1f2937;
+  margin-bottom: 10px;
+}
+
+.task-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.task-meta {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.task-delete {
+  font-size: 11px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #7f1d1d, #ef4444);
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* === AUTH (LOGIN / REGISTER) === */
+.auth-wrapper {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: linear-gradient(145deg, #020617, #020617cc);
+  border-radius: 18px;
+  border: 1px solid #1f2937;
+  padding: 28px 28px 32px;
+  box-shadow: 
+    0 22px 55px rgba(15, 23, 42, 0.9),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.auth-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.auth-subtitle {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+.auth-footer-text {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #9ca3af;
+  text-align: center;
+}
+
+.auth-link {
+  color: #60a5fa;
+  text-decoration: none;
+}
+/* === KANBAN BOARD === */
+.kanban-board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 12px;
+}
+
+@media (max-width: 900px) {
+  .kanban-board {
+    grid-template-columns: 1fr;
+  }
+}
+
+.kanban-column {
+  background: #020617;
+  border-radius: 16px;
+  border: 1px solid #1f2937;
+  padding: 14px 14px 16px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+}
+
+.kanban-column-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.kanban-title {
+  margin-left: 6px;
+}
+
+.kanban-column-header.todo {
+  color: #facc15;
+}
+
+.kanban-column-header.progress {
+  color: #38bdf8;
+}
+
+.kanban-column-header.done {
+  color: #4ade80;
+}
+
+.kanban-dot {
+  height: 8px;
+  width: 8px;
+  border-radius: 999px;
+  background: currentColor;
+  display: inline-block;
+}
+
+.kanban-count {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid #1f2937;
+}
+
+.kanban-column-body {
+  margin-top: 4px;
+}
+
+/* small tweak for "No tasks here" so it looks softer */
+.kanban-column-body .task-list-empty {
+  padding: 14px 0;
+  font-size: 12px;
+  color: #6b7280;
+}
