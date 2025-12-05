@@ -1,11 +1,8 @@
 
 require("dotenv").config();
 
-// Bas check ke liye logs (chaaho to hata sakti ho)
 console.log("DEBUG: MONGO_URI present?", !!process.env.MONGO_URI);
 console.log("DEBUG: JWT_SECRET present?", !!process.env.JWT_SECRET);
-
-// 2. Basic imports
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -20,10 +17,15 @@ const app = express();
 // 5. CORS (sab origin allowed) – chaaho to restrict bhi kar sakti ho
 app.use(
   cors({
-    origin: "*", // later: ["http://localhost:5173", "https://task-app-bice-three.vercel.app"]
+    origin: [
+      "http://localhost:5173",
+      "https://task-app-bice-three.vercel.app"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
+
 
 // 6. JSON body parser
 app.use(express.json());

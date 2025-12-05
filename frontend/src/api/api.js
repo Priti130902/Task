@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://task-5tje.onrender.com",   // ✅ apna backend port yahin rakho
+  baseURL: "https://task-5tje.onrender.com/api",  
 });
 
 // ✅ AUTO TOKEN ATTACH TO EVERY REQUEST (POST, GET, PUT, DELETE)
