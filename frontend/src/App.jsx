@@ -14,21 +14,32 @@ export default function App() {
 
   return (
     <div className="app-layout">
-      {isAuthenticated && <Sidebar />}
-
+      {/* Sidebar + Topbar hamesha dikhao,
+          bas routes ko protect karo */}
+      <Sidebar />
       <div className="main-area">
-        {isAuthenticated && <Topbar />}
+        <Topbar />
 
         <main className="page-content">
           <Routes>
+            {/* Dashboard sirf logged-in user ke liye */}
             <Route
               path="/"
               element={
                 isAuthenticated ? <Dashboard /> : <Navigate to="/login" />
               }
             />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+
+            {/* Login / Register pages:
+                agar already login hai to wapas Dashboard */}
+            <Route
+              path="/login"
+              element={isAuthenticated ? <Navigate to="/" /> : <Login />}
+            />
+            <Route
+              path="/register"
+              element={isAuthenticated ? <Navigate to="/" /> : <Register />}
+            />
           </Routes>
         </main>
       </div>

@@ -15,10 +15,10 @@ const initialState = {
 
 // ✅ LOGIN
 export const loginUser = createAsyncThunk(
-  "auth/login",
+  "/api/auth/login",
   async (data, thunkAPI) => {
     try {
-      const res = await API.post("/auth/login", data); // { user, token }
+      const res = await API.post("/api/auth/login", data); // { user, token }
       return res.data;
     } catch (err) {
       return thunkAPI.rejectWithValue(
