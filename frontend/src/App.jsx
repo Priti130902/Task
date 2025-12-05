@@ -14,7 +14,6 @@ export default function App() {
 
   return (
     <div className="app-layout">
-      {/* Sidebar & Topbar sirf tabhi dikhen jab user login ho */}
       {isAuthenticated && <Sidebar />}
 
       <div className="main-area">
@@ -22,15 +21,12 @@ export default function App() {
 
         <main className="page-content">
           <Routes>
-            {/* ✅ PROTECTED ROUTE */}
             <Route
               path="/"
               element={
                 isAuthenticated ? <Dashboard /> : <Navigate to="/login" />
               }
             />
-
-            {/* ✅ PUBLIC ROUTES */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>

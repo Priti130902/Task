@@ -16,12 +16,12 @@ export default function Login() {
     password: "",
   });
 
-  // Agar already logged in hai to direct Dashboard
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/");              // 👈 yahan tumhara Dashboard route hai
-    }
-  }, [isAuthenticated, navigate]);
+ useEffect(() => {
+  if (isAuthenticated) {
+    navigate("/", { replace: true });
+  }
+}, [isAuthenticated, navigate]);
+
 
   const onChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
