@@ -1,5 +1,8 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectIsAuthenticated } from "./features/auth/authSlice";
+
 import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
 import Dashboard from "./pages/Dashboard";
@@ -7,17 +10,27 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 
 export default function App() {
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+
   return (
     <div className="app-layout">
-      {/* LEFT SIDEBAR */}
-      <Sidebar />
+      {/* Sidebar & Topbar sirf tabhi dikhen jab user login ho */}
+      {isAuthenticated && <Sidebar />}
 
-      {/* RIGHT SIDE: TOPBAR + PAGE CONTENT */}
       <div className="main-area">
-        <Topbar />
+        {isAuthenticated && <Topbar />}
+
         <main className="page-content">
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            {/* ✅ PROTECTED ROUTE */}
+            <Route
+              path="/"
+              element={
+                isAuthenticated ? <Dashboard /> : <Navigate to="/login" />
+              }
+            />
+
+            {/* ✅ PUBLIC ROUTES */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>
